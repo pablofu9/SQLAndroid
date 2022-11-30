@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Ejemplo_Kotlin_SQL</string>
+    <string name="insertar">INSERTAR</string>
+    <string name="escribe_el_dni">Escribe el dni</string>
+    <string name="escribe_el_nombre">Escribe el nombre</string>
+    <string name="escribe_los_apellidos">Escribe los apellidos</string>
+    <string name="escribe_la_edad">Escribe la edad</string>
+    <string name="leer">LEER</string>
+</resources>
