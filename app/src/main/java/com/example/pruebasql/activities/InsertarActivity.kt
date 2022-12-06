@@ -15,7 +15,7 @@ class InsertarActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var nombre: EditText
     private lateinit var apellidos: EditText
     private lateinit var edad: EditText
-    private lateinit var telefono:EditText
+    private lateinit var telefono: EditText
     private lateinit var guardar: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +29,20 @@ class InsertarActivity : AppCompatActivity(), View.OnClickListener {
         guardar = findViewById(R.id.guardar)
         telefono = findViewById(R.id.telefono)
         guardar.setOnClickListener(this)
+
+
+        //Si venimos de modificar, hacemos esto
+        if(intent.hasExtra("alumno")){
+            val alRecibed =intent?.getSerializableExtra("alumno") as Alumno
+            dni.setText(alRecibed.dni)
+            nombre.setText(alRecibed.nombre)
+            apellidos.setText(alRecibed.apellidos)
+            edad.setText(alRecibed.edad.toString())
+            telefono.setText(alRecibed.telefono)
+            dni.isEnabled = false
+            guardar.text = "Modificar"
+
+        }
     }
 
     override fun onClick(view: View) {
@@ -36,20 +50,34 @@ class InsertarActivity : AppCompatActivity(), View.OnClickListener {
             && apellidos.text.toString().isNotEmpty() && edad.text.toString().isNotEmpty()
         ) {
             val helper = SqliteHelper(this)
-            try {
-                if (helper.anyadirAlumno(
-                        Alumno(dni.text.toString(), nombre.text.toString(),
-                            apellidos.text.toString(), edad.text.toString().toInt(),telefono.text.toString())
-                    ) != (-1).toLong()
+            //Para que el boton actue de manera distinta si venimos de modificar
+            if(intent.hasExtra("alumno")){
+                val alModificado = Alumno(dni.text.toString(), nombre.text.toString(), apellidos.text.toString(),
+                edad.text.toString().toInt(), telefono.text.toString())
+                helper.modificarAlumno(alModificado)
+                finish()
+            }else {
+                try {
+                    if (helper.anyadirAlumno(
+                            Alumno(
+                                dni.text.toString(),
+                                nombre.text.toString(),
+                                apellidos.text.toString(),
+                                edad.text.toString().toInt(),
+                                telefono.text.toString()
+                            )
+                        ) != (-1).toLong()
 
-                ) {
-                    Toast.makeText(this, "Insertado", Toast.LENGTH_SHORT).show()
-                    finish()
-                } else
-                    Toast.makeText(this, "Error al insertar", Toast.LENGTH_SHORT).show()
-            } catch (ex: NumberFormatException) {
-                Toast.makeText(this, "La edad tiene que ser númerica", Toast.LENGTH_SHORT).show()
+                    ) {
+                        Toast.makeText(this, "Insertado", Toast.LENGTH_SHORT).show()
+                        finish()
+                    } else
+                        Toast.makeText(this, "Error al insertar", Toast.LENGTH_SHORT).show()
+                } catch (ex: NumberFormatException) {
+                    Toast.makeText(this, "La edad tiene que ser númerica", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
             }
         }
     }
-}

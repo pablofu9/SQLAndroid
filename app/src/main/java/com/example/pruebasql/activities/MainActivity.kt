@@ -10,6 +10,7 @@ import com.example.pruebasql.R
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var insertar: Button
     private lateinit var leer: Button
+    private lateinit var filtrar: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,9 +18,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         insertar = findViewById(R.id.insert)
         leer = findViewById(R.id.leer)
+        filtrar=findViewById(R.id.filtrar)
 
         insertar.setOnClickListener(this)
         leer.setOnClickListener(this)
+        filtrar.setOnClickListener(this)
+
+
     }
 
     override fun onClick(view: View) {
@@ -30,6 +35,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.leer -> {
                 intent = Intent(this, LeerActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.filtrar->{
+                var intent = Intent(this, FiltroActivity::class.java)
                 startActivity(intent)
             }
         }

@@ -11,11 +11,20 @@
         android:id="@+id/insert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/insertar"/>
+        android:text="@string/insertar"
+        android:layout_margin="10dp"/>
 
     <Button
         android:id="@+id/leer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/leer"/>
+        android:text="@string/leer"
+        android:layout_margin="10dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/filtrar"
+        android:text="@string/filtrar"
+        android:layout_margin="10dp"/>
 </LinearLayout>

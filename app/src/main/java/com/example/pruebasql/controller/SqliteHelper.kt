@@ -63,6 +63,27 @@ class SqliteHelper(context: Context?) :
         db.execSQL(sql)
          */
     }
+    fun eliminarAlumno(alumno:Alumno){
+        val db = writableDatabase
+        db.execSQL("DELETE FROM "+AlumnosContract.TABLE_NAME+" WHERE " + AlumnosContract.DNI+" ='"+alumno.dni+"'")
+    }
+    //Otro metodo para eliminar, es el mas recomendable
+    fun deleteAlumno(alumno: Alumno){
+        val db = writableDatabase
+        db.delete(AlumnosContract.TABLE_NAME, AlumnosContract.DNI+"=?", arrayOf(alumno.dni))
+    }
+
+    //Metodo para modificar
+    fun modificarAlumno(alumno: Alumno){
+        val db=writableDatabase
+        val values = ContentValues()
+        values.put(AlumnosContract.NOMBRE, alumno.nombre)
+        values.put(AlumnosContract.APELLIDOS, alumno.apellidos)
+        values.put(AlumnosContract.EDAD, alumno.edad)
+        values.put(AlumnosContract.TELEFONO, alumno.telefono)
+        db.update(AlumnosContract.TABLE_NAME, values, AlumnosContract.DNI+" = ?", arrayOf(alumno.dni))
+
+    }
 
     fun leer(): Cursor {
         val db = readableDatabase

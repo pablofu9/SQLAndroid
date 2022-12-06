@@ -6,4 +6,12 @@
     <string name="escribe_los_apellidos">Escribe los apellidos</string>
     <string name="escribe_la_edad">Escribe la edad</string>
     <string name="leer">LEER</string>
+    <string name="filtrar">Filtrar</string>
+    <string name="edad_minima">Edad minima</string>
+    <string name="edad_maxima">Edad maxima</string>
+    <string name="filtro_por_nombre">Filtro por nombre</string>
+    <string name="empieza_por">Empieza por</string>
+    <string name="buscar">Buscar</string>
+    <string name="contiene">Contiene</string>
+    <string name="introduce_la_cadena">Introduce la cadena...</string>
 </resources>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.FiltroActivity"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/edad_minima"
+        android:layout_margin="10dp"
+        android:textSize="20sp"
+        android:id="@+id/txtMinima"/>
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekMinima"
+        android:progress="0"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/edad_maxima"
+        android:layout_margin="10dp"
+        android:textSize="20sp"
+        android:id="@+id/txtMaxima"/>
+
+    <!--El atributo progress es para indicar la posicion inicial-->
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekMaxima"
+        android:progress="100"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/filtro_por_nombre"
+        android:layout_margin="10dp"
+        android:textSize="20sp"/>
+
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/groupFiltro" android:layout_margin="10dp">
+
+        <RadioButton
+            android:id="@+id/radioEmpieza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/empieza_por"
+            android:textSize="15sp" android:layout_margin="7dp"/>
+        <RadioButton
+            android:id="@+id/radioContiene"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/contiene"
+            android:textSize="15sp" android:layout_margin="7dp"/>
+        <RadioButton
+            android:id="@+id/radioBuscar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/buscar"
+            android:textSize="15sp" android:layout_margin="7dp"/>
+    </RadioGroup>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtBuscar"
+        android:hint="@string/introduce_la_cadena" android:layout_margin="10dp"
+        android:textSize="20sp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buscar"
+        android:layout_margin="10dp"
+        android:textSize="20sp"
+        android:id="@+id/btnBuscar"
+        />
+</LinearLayout>

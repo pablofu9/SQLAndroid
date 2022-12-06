@@ -1,6 +1,6 @@
 package com.example.pruebasql.model
 
-class Alumno {
+class Alumno: java.io.Serializable{
     var dni: String
     var nombre: String
     var apellidos: String
